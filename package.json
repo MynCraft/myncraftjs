@@ -1,0 +1,38 @@
+{
+  "name": "myncraftjs",
+  "version": "0.0.1",
+  "description": "Simple minecraft bot package",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/mjs/index.js",
+  "types": "./dist/typings/index.d.ts",
+  "scripts": {
+    "dev": "nodemon --watch ./src -e ts --exec 'npm run test' ",
+    "test": "clear&&cd src&&node --no-warnings=ExperimentalWarning --loader ts-node/esm test.ts",
+    "build": "tsc --project tsconfig.json & tsc --project tsconfig.mjs.json "
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/myncraft/MynCraftjs.git"
+  },
+  "keywords": [
+    "mineflayer",
+    "minecraft",
+    "myncraftjs",
+    "mcbot",
+    "minecraftbot",
+    "mineflayerjs",
+    "senesatka"
+  ],
+  "author": {
+    "email": "senesatka@gmail.com",
+    "name": "SeneSatka"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MynCraft/myncraftjs/issues"
+  },
+  "homepage": "https://github.com/MynCraft/myncraftjs#readme"
+}
