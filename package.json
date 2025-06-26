@@ -1,14 +1,14 @@
 {
   "name": "myncraftjs",
   "version": "0.0.1",
-  "description": "Simple minecraft bot package",
+  "description": "Simple minecraft bot package extends from mineflayer",
   "main": "./dist/cjs/index.js",
   "module": "./dist/mjs/index.js",
   "types": "./dist/typings/index.d.ts",
   "scripts": {
     "dev": "nodemon --watch ./src -e ts --exec 'npm run test' ",
     "test": "clear&&cd src&&node --no-warnings=ExperimentalWarning --loader ts-node/esm test.ts",
-    "build": "tsc --project tsconfig.json & tsc --project tsconfig.mjs.json "
+    "build": "echo 'Build started'&&npx tsc&&npx tsc -p tsconfig.mjs.json&&echo 'Build finished'"
   },
   "engines": {
     "node": ">=18"
@@ -24,7 +24,13 @@
     "mcbot",
     "minecraftbot",
     "mineflayerjs",
-    "senesatka"
+    "senesatka",
+    "myncraft",
+    "bot",
+    "mcbot",
+    "@myncraftjs",
+    "@myncraft",
+    "senka"
   ],
   "author": {
     "email": "senesatka@gmail.com",
@@ -34,5 +40,22 @@
   "bugs": {
     "url": "https://github.com/MynCraft/myncraftjs/issues"
   },
-  "homepage": "https://github.com/MynCraft/myncraftjs#readme"
+  "homepage": "https://github.com/MynCraft/myncraftjs#readme",
+  "dependencies": {
+    "@myncraftjs/colorchat": "^1.0.3",
+    "@myncraftjs/logger": "^1.0.0",
+    "@myncraftjs/spawncommands": "^1.0.0",
+    "minecraft-protocol": "^1.57.0",
+    "mineflayer": "^4.29.0",
+    "prismarine-entity": "^2.5.0",
+    "prismarine-item": "^1.16.0",
+    "typed-emitter": "^1.4.0",
+    "vec3": "^0.1.10"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.3",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
 }
