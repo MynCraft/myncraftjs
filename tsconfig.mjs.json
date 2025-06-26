@@ -1,15 +1,20 @@
 {
   "compilerOptions": {
-    "lib": [
-      "ESNext"
-    ],
-    "moduleResolution": "node",
-    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
     "target": "ESNext",
-    "outDir": "./dist/mjs",
-    "module": "ESNext"
+    "module": "ESNext",
+    "moduleDetection": "auto",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "declaration": true,
+    "declarationDir": "./dist/typings",
+    "outDir": "./dist/mjs"
   },
   "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
     "compilerOptions": {
       "lib": [
         "ESNext"
@@ -20,6 +25,7 @@
     }
   },
   "include": [
-    "src"
-  ]
+    "./src"
+  ],
+  "rootDir": "./src"
 }

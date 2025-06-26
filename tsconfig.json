@@ -1,21 +1,30 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "lib": ["ESNext"],
-    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "lib": [
+      "ESNext"
+    ],
     "target": "ESNext",
-    "outDir": "./dist/cjs",
     "module": "CommonJS",
-    "declaration": true,
-    "declarationDir": "./dist/typings"
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "outDir": "./dist/cjs"
   },
   "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
     "compilerOptions": {
-      "lib": ["ESNext"],
+      "lib": [
+        "ESNext"
+      ],
+      "moduleResolution": "node",
+      "esModuleInterop": true,
       "target": "ESNext",
-      "module": "CommonJS",
-      "esModuleInterop": true
+      "module": "esnext"
     }
   },
-  "include": ["src"]
+  "include": [
+    "./src"
+  ],
+  "rootDir": "./src"
 }
