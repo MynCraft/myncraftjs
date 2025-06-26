@@ -10,9 +10,18 @@ declare module "minecraft-protocol" {
     interface Socket {
         _host: string;
     }
+
+}
+declare module "mineflayer" {
+    interface BotEvents {
+        "logger:log": (...texts: any[]) => void;
+        "logger:warn": (...texts: any[]) => void;
+        "logger:error": (...texts: any[]) => void;
+    }
 }
 export type Options = BotOptions & {
-
+    logger?: boolean;
+    logEvent?: boolean
 }
 export class Client extends (EventEmitter as new () => TypedEventEmitter<BotEvents>) {
     _client: MClient;
@@ -33,6 +42,29 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<BotEven
         this._client = this.bot._client;
         this.loadPlugins([colorChat, spawncommands])
         this.logger = new Logger({ header: opt.username || "Bot" });
+        if (!(opt.logger) && typeof opt.logger === "boolean") {
+            this.logger.error = () => { };
+            this.logger.log = () => { };
+            this.logger.warn = () => { };
+        }
+        if (opt.logEvent) {
+            const error = this.logger.error
+            const log = this.logger.log
+            const warn = this.logger.warn
+            this.logger.error = (...texts: any[]) => {
+                this.emit("logger:error", texts);
+                error(texts);
+            };
+            this.logger.log = (...texts: any[]) => {
+                this.emit("logger:log", texts);
+                log(texts);
+            };
+            this.logger.error = (...texts: any[]) => {
+                this.emit("logger:error", texts);
+                error(texts);
+            };
+
+        }
         console.clear();
         defaultEventsSetup(this);
         this.bot.on("resourcePack", () => {
