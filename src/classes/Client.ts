@@ -18,23 +18,23 @@ declare module "mineflayer" {
         "logger:warn": (...texts: any[]) => void;
         "logger:error": (...texts: any[]) => void;
     }
-}
-export type Options = BotOptions & {
-    logger?: boolean;
-    logEvent?: boolean
+    interface BotOptions {
+        logger?: boolean;
+        logEvent?: boolean
+    }
 }
 export class Client extends (EventEmitter as new () => TypedEventEmitter<BotEvents>) {
     _client: MClient;
     private bot: Bot;
     logger: Logger;
-    options: Options;
+    options: BotOptions;
     plugins: Array<Plugin> = [];
     private _persistentListeners: {
         type: "on" | "once";
         event: keyof BotEvents;
         listener: (...args: any[]) => void;
     }[] = [];
-    constructor(opt: Options) {
+    constructor(opt: BotOptions) {
         super();
         opt.hideErrors ??= true;
         this.options = opt
