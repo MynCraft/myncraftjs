@@ -37,6 +37,7 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<BotEven
     constructor(opt: BotOptions) {
         super();
         opt.hideErrors ??= true;
+        opt.logEvent ??= true;
         this.options = opt
         this.bot = createBot(opt);
         this._client = this.bot._client;
