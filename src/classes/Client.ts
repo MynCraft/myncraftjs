@@ -20,7 +20,8 @@ declare module "mineflayer" {
     }
     interface BotOptions {
         logger?: boolean;
-        logEvent?: boolean
+        logEvent?: boolean,
+        chatLog?: boolean,
     }
 }
 export class Client extends (EventEmitter as new () => TypedEventEmitter<BotEvents>) {
@@ -36,6 +37,7 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<BotEven
     }[] = [];
     constructor(opt: BotOptions) {
         super();
+
         opt.hideErrors ??= true;
         opt.logEvent ??= true;
         this.options = opt
@@ -62,7 +64,7 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<BotEven
             };
             this.logger.error = (...texts: any[]) => {
                 this.emit("logger:error", texts);
-                error(texts);
+                warn(texts);
             };
 
         }
